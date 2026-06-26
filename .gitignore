@@ -3,3 +3,5 @@ __pycache__/
 .streamlit/secrets.toml
 *.egg-info/
 .env
+models/bank_churn_rf_model.pkl
+models/bank_preprocessor.pkl
