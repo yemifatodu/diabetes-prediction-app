@@ -15,327 +15,132 @@ st.set_page_config(
 # ── Design System ─────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
-    html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
-
-    .stApp { background-color: #F4F7F9; }
-
-    /* ── Hide Streamlit chrome ── */
+    html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
+    .stApp { background-color: #FFFFFF; }
     #MainMenu, footer, header { visibility: hidden; }
     .stDeployButton { display: none; }
 
-    /* ── Sidebar ── */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0B2545 0%, #0D2E55 60%, #0F3460 100%);
-        border-right: 1px solid #1A6B4A33;
+        background: #F0F9FF;
+        border-right: 1px solid #BAE6FD;
     }
-    [data-testid="stSidebar"] * { color: #CBD5E0 !important; }
+    [data-testid="stSidebar"] * { color: #0C4A6E !important; }
     [data-testid="stSidebar"] h1,
     [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 { color: #2ECC8A !important; }
-    [data-testid="stSidebar"] a { color: #2ECC8A !important; text-decoration: none; }
-    [data-testid="stSidebar"] a:hover { color: #56E6A8 !important; text-decoration: underline; }
-    [data-testid="stSidebar"] hr { border-color: #2ECC8A33 !important; }
+    [data-testid="stSidebar"] h3 { color: #0891B2 !important; }
+    [data-testid="stSidebar"] a { color: #0891B2 !important; text-decoration: none; }
+    [data-testid="stSidebar"] a:hover { color: #0E7490 !important; text-decoration: underline; }
+    [data-testid="stSidebar"] hr { border-color: #BAE6FD !important; }
+    [data-testid="stAppViewContainer"] > .main { background-color: #FFFFFF; }
 
-    /* ── Main background ── */
-    [data-testid="stAppViewContainer"] > .main { background-color: #F4F7F9; }
-
-    /* ── Header bar ── */
-    .top-bar {
-        background: linear-gradient(135deg, #0B2545 0%, #0D2E55 100%);
-        padding: 22px 36px;
-        border-radius: 12px;
-        margin-bottom: 24px;
-        border-bottom: 3px solid #2ECC8A;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .top-bar-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.9rem;
-        font-weight: 700;
-        color: #FFFFFF;
-        margin: 0;
-    }
-    .top-bar-title span { color: #2ECC8A; }
-    .top-bar-subtitle {
-        font-size: 0.78rem;
-        color: #94A3B8;
-        margin-top: 4px;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-    }
-    .top-bar-badge {
-        background: #2ECC8A22;
-        border: 1px solid #2ECC8A66;
-        color: #2ECC8A;
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        color: #64748B;
-        margin-bottom: 10px;
-        padding-left: 2px;
-    }
-
-    /* ── Cards ── */
-    .card {
-        background: #FFFFFF;
-        border-radius: 12px;
-        padding: 22px 26px;
-        border: 1px solid #E2E8F0;
-        box-shadow: 0 1px 4px rgba(11,37,69,0.06);
-        margin-bottom: 18px;
-    }
-    .card-title {
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-        color: #0B2545;
-        border-left: 3px solid #2ECC8A;
-        padding-left: 10px;
-        margin-bottom: 18px;
-    }
-
-    /* ── KPI strip ── */
-    .kpi-row {
-        display: flex;
-        gap: 14px;
-        margin-bottom: 22px;
-        flex-wrap: wrap;
-    }
-    .kpi-chip {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        padding: 14px 20px;
-        flex: 1;
-        min-width: 120px;
-        box-shadow: 0 1px 3px rgba(11,37,69,0.05);
-    }
-    .kpi-chip-accent {
-        width: 26px;
-        height: 3px;
-        background: #2ECC8A;
-        border-radius: 2px;
-        margin-bottom: 8px;
-    }
-    .kpi-chip-value {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0B2545;
-        line-height: 1;
-    }
-    .kpi-chip-label {
-        font-size: 0.68rem;
-        font-weight: 600;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: #64748B;
-        margin-top: 4px;
-    }
-
-    /* ── Input labels ── */
     label, .stSlider label, .stSelectbox label, .stNumberInput label {
-        font-size: 0.76rem !important;
+        font-size: 0.78rem !important;
         font-weight: 600 !important;
-        color: #334155 !important;
-        letter-spacing: 0.5px !important;
-        text-transform: uppercase !important;
+        color: #0C4A6E !important;
+        letter-spacing: 0.3px !important;
     }
 
-    /* ── Primary button ── */
     .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #0B2545 0%, #0D2E55 100%) !important;
-        color: #2ECC8A !important;
-        border: 1px solid #2ECC8A !important;
-        border-radius: 8px !important;
+        background: #0891B2 !important;
+        color: #FFFFFF !important;
+        border: none !important;
+        border-radius: 10px !important;
         font-weight: 700 !important;
-        font-size: 0.88rem !important;
-        letter-spacing: 1.5px !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 1px !important;
         text-transform: uppercase !important;
         padding: 14px 0 !important;
-        transition: all 0.2s ease !important;
-        box-shadow: 0 4px 14px rgba(11,37,69,0.2) !important;
+        box-shadow: 0 4px 14px rgba(8,145,178,0.3) !important;
     }
     .stButton > button[kind="primary"]:hover {
-        background: linear-gradient(135deg, #2ECC8A 0%, #56E6A8 100%) !important;
-        color: #0B2545 !important;
-        box-shadow: 0 6px 20px rgba(46,204,138,0.35) !important;
+        background: #0E7490 !important;
+        box-shadow: 0 6px 20px rgba(8,145,178,0.45) !important;
     }
 
-    /* ── Verdict cards ── */
-    .verdict-high {
-        background: linear-gradient(135deg, #FFF1F1 0%, #FEE2E2 100%);
-        border: 1.5px solid #DC2626;
-        border-left: 5px solid #DC2626;
-        border-radius: 12px;
-        padding: 22px 26px;
-        margin-bottom: 16px;
-    }
-    .verdict-low {
-        background: linear-gradient(135deg, #F0FDF8 0%, #DCFCEE 100%);
-        border: 1.5px solid #2ECC8A;
-        border-left: 5px solid #2ECC8A;
-        border-radius: 12px;
-        padding: 22px 26px;
-        margin-bottom: 16px;
-    }
-    .verdict-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 4px;
-    }
-    .verdict-prob {
-        font-size: 2.2rem;
-        font-weight: 700;
-        line-height: 1;
-        margin: 8px 0 4px 0;
-    }
-    .verdict-sublabel {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        opacity: 0.65;
+    .normal-range {
+        font-size: 0.64rem;
+        color: #94A3B8;
+        font-family: 'DM Mono', monospace;
+        margin-top: 2px;
+        margin-bottom: 10px;
     }
 
-    /* ── Risk bar ── */
-    .risk-bar-wrap {
-        background: #E2E8F0;
-        border-radius: 6px;
-        height: 8px;
-        margin: 12px 0 5px 0;
+    .result-panel-high {
+        background: #FFF1F2;
+        border: 1.5px solid #FDA4AF;
+        border-radius: 14px;
         overflow: hidden;
+        margin-bottom: 16px;
     }
-    .risk-bar-high {
-        height: 100%;
-        border-radius: 6px;
-        background: linear-gradient(90deg, #F59E0B, #DC2626);
+    .result-panel-low {
+        background: #F0F9FF;
+        border: 1.5px solid #7DD3FC;
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 16px;
     }
-    .risk-bar-low {
-        height: 100%;
-        border-radius: 6px;
-        background: linear-gradient(90deg, #2ECC8A, #16A34A);
-    }
+    .result-panel-top-high { background: #DC2626; padding: 18px 22px; }
+    .result-panel-top-low  { background: #0891B2; padding: 18px 22px; }
+    .result-panel-verdict  { font-size: 1.1rem; font-weight: 700; color: #FFFFFF; }
+    .result-panel-sublabel { font-size: 0.67rem; color: rgba(255,255,255,0.75);
+                              letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
+    .result-panel-body     { padding: 18px 22px; }
+    .result-prob-high { font-size: 3rem; font-weight: 700; color: #DC2626;
+                        line-height: 1; font-family: 'DM Mono', monospace; }
+    .result-prob-low  { font-size: 3rem; font-weight: 700; color: #0891B2;
+                        line-height: 1; font-family: 'DM Mono', monospace; }
+    .result-prob-label { font-size: 0.67rem; font-weight: 600; letter-spacing: 1.5px;
+                         text-transform: uppercase; color: #64748B; margin-top: 4px; }
 
-    /* ── Clinical factor chips ── */
-    .factor-chip {
-        background: #F8FAFC;
-        border: 1px solid #E2E8F0;
-        border-radius: 8px;
-        padding: 12px 16px;
-        margin-bottom: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .factor-name {
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: #334155;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    .factor-value {
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: #0B2545;
-    }
-    .factor-badge-red {
-        background: #FEE2E2; color: #DC2626;
-        padding: 2px 8px; border-radius: 10px;
-        font-size: 0.68rem; font-weight: 700;
-    }
-    .factor-badge-yellow {
-        background: #FEF9C3; color: #CA8A04;
-        padding: 2px 8px; border-radius: 10px;
-        font-size: 0.68rem; font-weight: 700;
-    }
-    .factor-badge-green {
-        background: #DCFCE7; color: #16A34A;
-        padding: 2px 8px; border-radius: 10px;
-        font-size: 0.68rem; font-weight: 700;
-    }
+    .rbar-track { background: #E2E8F0; border-radius: 999px; height: 6px;
+                  margin: 12px 0 5px 0; overflow: hidden; }
+    .rbar-fill-high { height: 100%; border-radius: 999px;
+                      background: linear-gradient(90deg, #FCA5A5, #DC2626); }
+    .rbar-fill-low  { height: 100%; border-radius: 999px;
+                      background: linear-gradient(90deg, #7DD3FC, #0891B2); }
 
-    /* ── Action cards ── */
-    .action-card {
-        background: #FFFFFF;
-        border-radius: 10px;
-        padding: 16px 20px;
-        border: 1px solid #E2E8F0;
-        margin-bottom: 8px;
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-    }
-    .action-icon { font-size: 1.1rem; margin-top: 1px; }
-    .action-text strong {
-        font-size: 0.83rem; font-weight: 700;
-        color: #0B2545; display: block; margin-bottom: 2px;
-    }
-    .action-text span { font-size: 0.76rem; color: #64748B; }
+    .bm-row { display: flex; align-items: center; justify-content: space-between;
+               padding: 10px 0; border-bottom: 1px solid #F1F5F9; }
+    .bm-row:last-child { border-bottom: none; }
+    .bm-name { font-size: 0.77rem; font-weight: 600; color: #334155; }
+    .bm-val  { font-size: 0.77rem; font-weight: 700; color: #0C4A6E;
+                font-family: 'DM Mono', monospace; }
+    .pill-red   { background:#FEE2E2; color:#DC2626; font-size:0.64rem; font-weight:700;
+                  padding:3px 9px; border-radius:999px; }
+    .pill-amber { background:#FEF9C3; color:#CA8A04; font-size:0.64rem; font-weight:700;
+                  padding:3px 9px; border-radius:999px; }
+    .pill-teal  { background:#E0F2FE; color:#0891B2; font-size:0.64rem; font-weight:700;
+                  padding:3px 9px; border-radius:999px; }
 
-    /* ── Gold divider → clinical green ── */
-    .green-divider {
-        height: 1px;
-        background: linear-gradient(90deg, #2ECC8A44, #2ECC8A, #2ECC8A44);
-        margin: 24px 0;
-        border: none;
-    }
+    .protocol-step { display:flex; gap:14px; align-items:flex-start;
+                     padding:13px 0; border-bottom:1px solid #F1F5F9; }
+    .protocol-step:last-child { border-bottom: none; }
+    .step-num { width:28px; height:28px; min-width:28px; border-radius:50%;
+                background:#E0F2FE; color:#0891B2; font-size:0.74rem; font-weight:700;
+                display:flex; align-items:center; justify-content:center; }
+    .step-num-high { width:28px; height:28px; min-width:28px; border-radius:50%;
+                     background:#FEE2E2; color:#DC2626; font-size:0.74rem; font-weight:700;
+                     display:flex; align-items:center; justify-content:center; }
+    .step-body strong { font-size:0.81rem; font-weight:700; color:#0C4A6E;
+                        display:block; margin-bottom:2px; }
+    .step-body span   { font-size:0.74rem; color:#64748B; line-height:1.5; }
 
-    /* ── Disclaimer ── */
-    .disclaimer {
-        background: #FFF7ED;
-        border: 1px solid #FED7AA;
-        border-left: 4px solid #F97316;
-        border-radius: 8px;
-        padding: 12px 16px;
-        font-size: 0.75rem;
-        color: #92400E;
-        margin-top: 20px;
-        line-height: 1.6;
-    }
+    .disclaimer { background:#FFFBEB; border:1px solid #FDE68A;
+                  border-left:3px solid #F59E0B; border-radius:8px;
+                  padding:11px 15px; font-size:0.71rem; color:#78350F;
+                  margin-top:20px; line-height:1.7; }
 
-    /* ── Metric overrides ── */
-    [data-testid="stMetric"] {
-        background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 10px;
-        padding: 14px 18px;
-    }
-    [data-testid="stMetricLabel"] {
-        font-size: 0.7rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 1.2px !important;
-        text-transform: uppercase !important;
-        color: #64748B !important;
-    }
-    [data-testid="stMetricValue"] {
-        font-size: 1.4rem !important;
-        font-weight: 700 !important;
-        color: #0B2545 !important;
-    }
-
-    [data-testid="stExpander"] {
-        border: 1px solid #E2E8F0 !important;
-        border-radius: 10px !important;
-        background: #FFFFFF !important;
-    }
+    [data-testid="stMetric"] { background:#F0F9FF; border:1px solid #BAE6FD;
+                                border-radius:10px; padding:12px 16px; }
+    [data-testid="stMetricLabel"] { font-size:0.67rem !important; font-weight:700 !important;
+                                    letter-spacing:1.2px !important; text-transform:uppercase !important;
+                                    color:#64748B !important; }
+    [data-testid="stMetricValue"] { font-size:1.3rem !important; font-weight:700 !important;
+                                    color:#0C4A6E !important; }
+    [data-testid="stExpander"] { border:1px solid #E0F2FE !important;
+                                  border-radius:10px !important; background:#FAFCFF !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -362,363 +167,382 @@ except Exception as e:
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("""
-    <div style="padding: 8px 0 22px 0;">
-        <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#2ECC8A;">
-            GlucoseIQ
-        </div>
-        <div style="font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; color:#64748B; margin-top:2px;">
-            Clinical Risk Intelligence
-        </div>
+    <div style="padding:10px 0 20px 0;">
+        <div style="font-size:1.3rem;font-weight:700;color:#0891B2;">🩺 GlucoseIQ</div>
+        <div style="font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;
+                    color:#64748B;margin-top:3px;">Clinical Risk Intelligence</div>
     </div>
     """, unsafe_allow_html=True)
-
     st.markdown("---")
-    st.markdown("### 🏥 Platform")
+    st.markdown("### Platform")
     st.markdown("""
-    <div style="font-size:0.8rem; color:#94A3B8; line-height:1.8;">
-    GlucoseIQ applies dual ensemble ML models — 
-    <strong style="color:#2ECC8A;">Random Forest</strong> and 
-    <strong style="color:#2ECC8A;">XGBoost</strong> — to assess 
-    Type 2 diabetes onset risk from 8 clinical biomarkers.
+    <div style="font-size:0.79rem;color:#0C4A6E;line-height:1.9;">
+    Dual-ensemble ML system applying <strong>Random Forest</strong> and
+    <strong>XGBoost</strong> to stratify Type 2 diabetes onset risk
+    from eight validated clinical biomarkers.
     </div>
     """, unsafe_allow_html=True)
-
     st.markdown("---")
-    st.markdown("### 📊 Model Performance")
+    st.markdown("### Model Performance")
     st.markdown("""
-    <div style="font-size:0.78rem; color:#94A3B8; line-height:2.2;">
-    <b style="color:#CBD5E0;">Random Forest AUC</b><br/>0.948<br/><br/>
-    <b style="color:#CBD5E0;">XGBoost AUC</b><br/>0.947<br/><br/>
-    <b style="color:#CBD5E0;">Dataset</b><br/>Pima Indians Diabetes (NIDDK)<br/><br/>
-    <b style="color:#CBD5E0;">Features</b><br/>8 clinical biomarkers + 3 engineered<br/><br/>
-    <b style="color:#CBD5E0;">Population</b><br/>768 female patients · Ages 21–81
+    <div style="font-size:0.77rem;color:#334155;line-height:2.3;">
+    <span style="color:#64748B;">Random Forest AUC</span><br/>
+    <strong style="color:#0891B2;font-size:1rem;">0.948</strong><br/>
+    <span style="color:#64748B;">XGBoost AUC</span><br/>
+    <strong style="color:#0891B2;font-size:1rem;">0.947</strong><br/>
+    <span style="color:#64748B;">Dataset</span><br/>Pima Indians · NIDDK · 768 records<br/>
+    <span style="color:#64748B;">Population</span><br/>Female patients · Ages 21–81
     </div>
     """, unsafe_allow_html=True)
-
     st.markdown("---")
-    st.markdown("### 🔗 Resources")
+    st.markdown("### Links")
     st.markdown("""
-    <div style="font-size:0.8rem; line-height:2.4;">
+    <div style="font-size:0.79rem;line-height:2.5;">
     <a href="https://github.com/yemifatodu" target="_blank">⟶ GitHub</a><br/>
     <a href="https://yemifatodu.online" target="_blank">⟶ Portfolio</a><br/>
     <a href="https://linkedin.com/in/yemifatodu" target="_blank">⟶ LinkedIn</a>
     </div>
     """, unsafe_allow_html=True)
-
     st.markdown("---")
     st.markdown("""
-    <div style="font-size:0.7rem; color:#475569; line-height:1.7;">
-    Built by <strong style="color:#2ECC8A;">Yemi Fatodu</strong><br/>
+    <div style="font-size:0.69rem;color:#475569;line-height:1.8;">
+    <strong style="color:#0891B2;">Yemi Fatodu</strong><br/>
     Data Scientist · BI Specialist<br/>Full-Stack Product Builder<br/><br/>
-    <em style="color:#64748B;">Open to freelance & contract engagements</em>
+    <em style="color:#94A3B8;">Available for freelance &amp; contract work</em>
     </div>
     """, unsafe_allow_html=True)
 
 # ── Header ────────────────────────────────────────────────────────────────────
-st.markdown("""
-<div class="top-bar">
-    <div>
-        <div class="top-bar-title">🩺 Glucose<span>IQ</span></div>
-        <div class="top-bar-subtitle">Clinical Diabetes Risk Assessment Platform</div>
+hc1, hc2 = st.columns([3, 1])
+with hc1:
+    st.markdown("""
+    <div style="display:flex;align-items:center;gap:14px;padding-bottom:0px;
+                border-bottom:2px solid #E0F2FE;margin-bottom:0px;">
+        <div style="width:80px;height:80px;background:linear-gradient(135deg,#0891B2,#0E7490);
+                    border-radius:12px;display:flex;align-items:center;
+                    justify-content:center;font-size:2.9rem;">🩺</div>
+        <div>
+            <div style="font-size:3.2rem;font-weight:700;color:#0C4A6E;letter-spacing:-1px;margin-bottom:2px;">
+                Glucose<span style="color:#0891B2;">IQ</span>
+            </div>
+            <div style="font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;font-weight:700;">
+                Clinical Diabetes Risk Assessment Platform
+            </div>
+        </div>
     </div>
-    <div class="top-bar-badge">● Dual-Model Active</div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+with hc2:
+    st.markdown("""
+    <div style="display:flex;justify-content:flex-end;padding-top:6px;">
+        <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;
+                    padding:8px 14px;font-size:0.71rem;font-weight:600;color:#0891B2;
+                    display:flex;align-items:center;gap:7px;">
+            <span style="width:7px;height:7px;background:#0891B2;
+                         border-radius:50%;display:inline-block;"></span>
+            DUAL MODEL ACTIVE
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 if not model_ok:
-    st.error(f"❌ Model load error: {model_error}")
+    st.error(f"Model error: {model_error}")
     st.stop()
 
-# ── KPI strip ─────────────────────────────────────────────────────────────────
-st.markdown("""
-<div class="kpi-row">
-    <div class="kpi-chip">
-        <div class="kpi-chip-accent"></div>
-        <div class="kpi-chip-value">0.948</div>
-        <div class="kpi-chip-label">RF AUC Score</div>
-    </div>
-    <div class="kpi-chip">
-        <div class="kpi-chip-accent"></div>
-        <div class="kpi-chip-value">0.947</div>
-        <div class="kpi-chip-label">XGB AUC Score</div>
-    </div>
-    <div class="kpi-chip">
-        <div class="kpi-chip-accent"></div>
-        <div class="kpi-chip-value">768</div>
-        <div class="kpi-chip-label">Patient Records</div>
-    </div>
-    <div class="kpi-chip">
-        <div class="kpi-chip-accent"></div>
-        <div class="kpi-chip-value">11</div>
-        <div class="kpi-chip-label">Feature Signals</div>
-    </div>
-    <div class="kpi-chip">
-        <div class="kpi-chip-accent"></div>
-        <div class="kpi-chip-value">2</div>
-        <div class="kpi-chip-label">Active Models</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+# ── Two-panel layout ──────────────────────────────────────────────────────────
+left_panel, right_panel = st.columns([1.05, 1], gap="large")
 
-# ── Model selector ────────────────────────────────────────────────────────────
-st.markdown('<div class="section-label">Model Selection</div>', unsafe_allow_html=True)
-model_choice = st.selectbox(
-    "Active Predictive Model",
-    ["Random Forest (AUC: 0.948)", "XGBoost (AUC: 0.947)"],
-    label_visibility="collapsed"
-)
+# ════════════════════ LEFT — Patient Intake ════════════════════
+with left_panel:
 
-st.markdown('<hr class="green-divider"/>', unsafe_allow_html=True)
+    st.markdown("""
+    <div style="font-size:0.67rem;font-weight:700;letter-spacing:2px;
+                text-transform:uppercase;color:#64748B;margin-bottom:8px;">Active Model</div>
+    """, unsafe_allow_html=True)
+    model_choice = st.selectbox("Active Model", [
+        "Random Forest (AUC: 0.948)", "XGBoost (AUC: 0.947)"
+    ], label_visibility="collapsed")
 
-# ── Input form ────────────────────────────────────────────────────────────────
-st.markdown('<div class="section-label">Patient Clinical Biomarkers</div>', unsafe_allow_html=True)
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
 
-with st.container():
-    st.markdown('<div class="card"><div class="card-title">Clinical Input Parameters</div>', unsafe_allow_html=True)
+    # CARD 1 — Metabolic
+    st.markdown("""
+    <div style="background:#FAFCFF;border:1px solid #E0F2FE;border-top:3px solid #0891B2;
+                border-radius:12px;padding:18px 20px 6px 20px;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;background:#E0F2FE;border-radius:8px;
+                        display:flex;align-items:center;justify-content:center;">🧪</div>
+            <div>
+                <div style="font-size:0.69rem;font-weight:700;letter-spacing:2px;
+                            text-transform:uppercase;color:#0891B2;">Metabolic Markers</div>
+                <div style="font-size:0.67rem;color:#94A3B8;">Glucose, insulin &amp; body composition</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
-    col1, col2, col3, col4 = st.columns(4)
-
-    with col1:
-        pregnancies = st.number_input("Pregnancies", min_value=0, max_value=20, value=1)
-        glucose     = st.number_input("Glucose (mg/dL)", min_value=0, max_value=300, value=110)
-
-    with col2:
-        blood_pressure  = st.number_input("Blood Pressure (mmHg)", min_value=0, max_value=200, value=70)
-        skin_thickness  = st.number_input("Skin Thickness (mm)", min_value=0, max_value=100, value=20)
-
-    with col3:
+    mc1, mc2 = st.columns(2)
+    with mc1:
+        glucose = st.number_input("Glucose (mg/dL)", min_value=0, max_value=300, value=110)
+        st.markdown('<div class="normal-range">Normal: 70–99 · Prediabetes: 100–125</div>', unsafe_allow_html=True)
+        bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=25.0)
+        st.markdown('<div class="normal-range">Normal: 18.5–24.9 · Obese: ≥30</div>', unsafe_allow_html=True)
+    with mc2:
         insulin = st.number_input("Insulin (IU/mL)", min_value=0, max_value=900, value=80)
-        bmi     = st.number_input("BMI", min_value=0.0, max_value=70.0, value=25.0)
+        st.markdown('<div class="normal-range">Normal: 16–166 IU/mL</div>', unsafe_allow_html=True)
+        skin_thickness = st.number_input("Skin Thickness (mm)", min_value=0, max_value=100, value=20)
+        st.markdown('<div class="normal-range">Triceps skinfold · Avg: 20–30mm</div>', unsafe_allow_html=True)
 
-    with col4:
-        dpf = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=0.3, step=0.01)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # CARD 2 — Cardiovascular
+    st.markdown("""
+    <div style="background:#FFFBFB;border:1px solid #FEE2E2;border-top:3px solid #F87171;
+                border-radius:12px;padding:18px 20px 6px 20px;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;background:#FEE2E2;border-radius:8px;
+                        display:flex;align-items:center;justify-content:center;">❤️</div>
+            <div>
+                <div style="font-size:0.69rem;font-weight:700;letter-spacing:2px;
+                            text-transform:uppercase;color:#DC2626;">Cardiovascular</div>
+                <div style="font-size:0.67rem;color:#94A3B8;">Blood pressure indicators</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    blood_pressure = st.number_input("Blood Pressure (mmHg)", min_value=0, max_value=200, value=70)
+    st.markdown('<div class="normal-range">Normal: &lt;120 · Elevated: 120–139 · Hypertensive: ≥140</div>', unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # CARD 3 — Demographics
+    st.markdown("""
+    <div style="background:#FFFDF0;border:1px solid #FEF08A;border-top:3px solid #CA8A04;
+                border-radius:12px;padding:18px 20px 6px 20px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;background:#FEF9C3;border-radius:8px;
+                        display:flex;align-items:center;justify-content:center;">👤</div>
+            <div>
+                <div style="font-size:0.69rem;font-weight:700;letter-spacing:2px;
+                            text-transform:uppercase;color:#CA8A04;">Patient Demographics</div>
+                <div style="font-size:0.67rem;color:#94A3B8;">Age, reproductive &amp; genetic history</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    dc1, dc2 = st.columns(2)
+    with dc1:
         age = st.number_input("Age (years)", min_value=21, max_value=100, value=30)
+        st.markdown('<div class="normal-range">Elevated risk after age 45</div>', unsafe_allow_html=True)
+    with dc2:
+        pregnancies = st.number_input("Pregnancies", min_value=0, max_value=20, value=1)
+        st.markdown('<div class="normal-range">Gestational risk: ≥5 pregnancies</div>', unsafe_allow_html=True)
 
-    st.markdown('</div>', unsafe_allow_html=True)
+    dpf = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=0.3, step=0.01)
+    st.markdown('<div class="normal-range">Genetic likelihood score · Low: &lt;0.5 · High: &gt;1.0</div>', unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-# ── Predict button ────────────────────────────────────────────────────────────
-predict_clicked = st.button("⟶  RUN CLINICAL RISK ASSESSMENT", type="primary", use_container_width=True)
+    predict_clicked = st.button("⟶  RUN CLINICAL RISK ASSESSMENT", type="primary", use_container_width=True)
 
-# ── Results ───────────────────────────────────────────────────────────────────
-if predict_clicked:
-    # Feature engineering
-    bmi_category  = 0 if bmi < 18.5 else 1 if bmi < 24.9 else 2 if bmi < 29.9 else 3
-    glucose_risk  = 0 if glucose < 100 else 1 if glucose < 126 else 2
-    age_group     = 0 if age <= 30 else 1 if age <= 45 else 2
+# ════════════════════ RIGHT — Results ════════════════════
+with right_panel:
 
-    input_data = pd.DataFrame([[
-        pregnancies, glucose, blood_pressure, skin_thickness,
-        insulin, bmi, dpf, age,
-        bmi_category, glucose_risk, age_group
-    ]], columns=features)
+    if not predict_clicked:
+        st.markdown("""
+        <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:14px;
+                    padding:44px 32px;text-align:center;margin-top:16px;">
+            <div style="font-size:2.5rem;margin-bottom:14px;">🩺</div>
+            <div style="font-size:1rem;font-weight:700;color:#0C4A6E;margin-bottom:8px;">
+                Awaiting Patient Data
+            </div>
+            <div style="font-size:0.79rem;color:#64748B;line-height:1.7;
+                        max-width:260px;margin:0 auto;">
+                Complete the clinical biomarker form and run the assessment
+                to receive a full risk stratification report.
+            </div>
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid #BAE6FD;">
+                <div style="font-size:0.67rem;letter-spacing:1.5px;text-transform:uppercase;
+                            color:#94A3B8;margin-bottom:10px;">Models on standby</div>
+                <div style="display:flex;justify-content:center;gap:12px;">
+                    <div style="background:#FFFFFF;border:1px solid #BAE6FD;border-radius:8px;
+                                padding:8px 16px;font-size:0.74rem;font-weight:600;color:#0891B2;">
+                        RF · AUC 0.948
+                    </div>
+                    <div style="background:#FFFFFF;border:1px solid #BAE6FD;border-radius:8px;
+                                padding:8px 16px;font-size:0.74rem;font-weight:600;color:#0891B2;">
+                        XGB · AUC 0.947
+                    </div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    input_scaled     = scaler.transform(input_data)
-    selected_model   = rf_model if "Random Forest" in model_choice else xgb_model
-    prediction       = selected_model.predict(input_scaled)[0]
-    probability      = selected_model.predict_proba(input_scaled)[0]
-    diabetes_prob    = probability[1] * 100
-    no_diabetes_prob = probability[0] * 100
-    confidence       = max(probability) * 100
+    else:
+        bmi_category = 0 if bmi < 18.5 else 1 if bmi < 24.9 else 2 if bmi < 29.9 else 3
+        glucose_risk = 0 if glucose < 100 else 1 if glucose < 126 else 2
+        age_group    = 0 if age <= 30 else 1 if age <= 45 else 2
 
-    st.markdown('<hr class="green-divider"/>', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">Clinical Risk Assessment Output</div>', unsafe_allow_html=True)
+        input_data = pd.DataFrame([[
+            pregnancies, glucose, blood_pressure, skin_thickness,
+            insulin, bmi, dpf, age, bmi_category, glucose_risk, age_group
+        ]], columns=features)
 
-    res_col1, res_col2 = st.columns([1.3, 1])
+        input_scaled   = scaler.transform(input_data)
+        selected_model = rf_model if "Random Forest" in model_choice else xgb_model
+        prediction     = selected_model.predict(input_scaled)[0]
+        probability    = selected_model.predict_proba(input_scaled)[0]
+        diabetes_prob  = probability[1] * 100
+        no_diab_prob   = probability[0] * 100
+        confidence     = max(probability) * 100
+        model_tag      = "RF" if "Random Forest" in model_choice else "XGB"
 
-    with res_col1:
+        # Verdict
         bar_pct = int(diabetes_prob)
         if prediction == 1:
             st.markdown(f"""
-            <div class="verdict-high">
-                <div class="verdict-sublabel">⚠ Diabetes Risk Verdict</div>
-                <div class="verdict-title" style="color:#DC2626;">HIGH RISK — DIABETES LIKELY</div>
-                <div class="verdict-prob" style="color:#DC2626;">{diabetes_prob:.1f}%</div>
-                <div class="verdict-sublabel">Predicted Diabetes Probability</div>
-                <div class="risk-bar-wrap">
-                    <div class="risk-bar-high" style="width:{bar_pct}%;"></div>
+            <div class="result-panel-high">
+                <div class="result-panel-top-high">
+                    <div class="result-panel-sublabel">⚠ Risk Assessment Complete</div>
+                    <div class="result-panel-verdict">HIGH RISK — DIABETES LIKELY</div>
                 </div>
-                <div style="font-size:0.7rem;color:#64748B;">
-                    Clinical threshold: 50% · Model confidence: {confidence:.1f}%
+                <div class="result-panel-body">
+                    <div class="result-prob-high">{diabetes_prob:.1f}%</div>
+                    <div class="result-prob-label">Predicted Diabetes Probability</div>
+                    <div class="rbar-track">
+                        <div class="rbar-fill-high" style="width:{bar_pct}%;"></div>
+                    </div>
+                    <div style="font-size:0.67rem;color:#94A3B8;">
+                        Threshold: 50% &nbsp;·&nbsp; Confidence: {confidence:.1f}% &nbsp;·&nbsp; Model: {model_tag}
+                    </div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
         else:
             st.markdown(f"""
-            <div class="verdict-low">
-                <div class="verdict-sublabel">✔ Diabetes Risk Verdict</div>
-                <div class="verdict-title" style="color:#16A34A;">LOW RISK — DIABETES UNLIKELY</div>
-                <div class="verdict-prob" style="color:#16A34A;">{no_diabetes_prob:.1f}%</div>
-                <div class="verdict-sublabel">Predicted No-Diabetes Probability</div>
-                <div class="risk-bar-wrap">
-                    <div class="risk-bar-low" style="width:{int(no_diabetes_prob)}%;"></div>
+            <div class="result-panel-low">
+                <div class="result-panel-top-low">
+                    <div class="result-panel-sublabel">✔ Risk Assessment Complete</div>
+                    <div class="result-panel-verdict">LOW RISK — DIABETES UNLIKELY</div>
                 </div>
-                <div style="font-size:0.7rem;color:#64748B;">
-                    Clinical threshold: 50% · Model confidence: {confidence:.1f}%
+                <div class="result-panel-body">
+                    <div class="result-prob-low">{no_diab_prob:.1f}%</div>
+                    <div class="result-prob-label">Predicted No-Diabetes Probability</div>
+                    <div class="rbar-track">
+                        <div class="rbar-fill-low" style="width:{int(no_diab_prob)}%;"></div>
+                    </div>
+                    <div style="font-size:0.67rem;color:#94A3B8;">
+                        Threshold: 50% &nbsp;·&nbsp; Confidence: {confidence:.1f}% &nbsp;·&nbsp; Model: {model_tag}
+                    </div>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
-    with res_col2:
-        st.metric("Diabetes Probability",    f"{diabetes_prob:.1f}%")
-        st.metric("No-Diabetes Probability", f"{no_diabetes_prob:.1f}%")
-        st.metric("Model Confidence",        f"{confidence:.1f}%")
-        st.metric("Active Model",            "RF" if "Random Forest" in model_choice else "XGB")
-
-    # ── Gauge ──
-    st.markdown('<hr class="green-divider"/>', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">Risk Probability Gauge</div>', unsafe_allow_html=True)
-
-    fig = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=diabetes_prob,
-        number={'suffix': '%', 'font': {'size': 32, 'color': '#0B2545', 'family': 'Inter'}},
-        title={'text': "Diabetes Risk Score", 'font': {'size': 13, 'color': '#64748B', 'family': 'Inter'}},
-        gauge={
-            'axis': {'range': [0, 100], 'tickcolor': '#94A3B8', 'tickfont': {'size': 10}},
-            'bar': {'color': "#DC2626" if prediction == 1 else "#2ECC8A", 'thickness': 0.25},
-            'bgcolor': '#F4F7F9',
-            'bordercolor': '#E2E8F0',
-            'steps': [
-                {'range': [0,  30],  'color': '#DCFCE7'},
-                {'range': [30, 60],  'color': '#FEF9C3'},
-                {'range': [60, 100], 'color': '#FEE2E2'}
-            ],
-            'threshold': {
-                'line': {'color': '#0B2545', 'width': 2},
-                'thickness': 0.75,
-                'value': 50
+        # Gauge
+        fig = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=diabetes_prob,
+            number={'suffix': '%', 'font': {'size': 26, 'color': '#0C4A6E', 'family': 'DM Sans'}},
+            title={'text': "Diabetes Risk Score", 'font': {'size': 10, 'color': '#94A3B8', 'family': 'DM Sans'}},
+            gauge={
+                'axis': {'range': [0, 100], 'tickcolor': '#CBD5E0', 'tickfont': {'size': 9}},
+                'bar': {'color': "#DC2626" if prediction == 1 else "#0891B2", 'thickness': 0.2},
+                'bgcolor': '#F8FAFC', 'bordercolor': '#E2E8F0',
+                'steps': [
+                    {'range': [0,  35],  'color': '#E0F2FE'},
+                    {'range': [35, 60],  'color': '#FEF9C3'},
+                    {'range': [60, 100], 'color': '#FEE2E2'}
+                ],
+                'threshold': {'line': {'color': '#64748B', 'width': 2}, 'thickness': 0.75, 'value': 50}
             }
-        }
-    ))
-    fig.update_layout(
-        height=240,
-        margin=dict(t=50, b=10, l=20, r=20),
-        paper_bgcolor='#FFFFFF',
-        plot_bgcolor='#FFFFFF',
-        font=dict(family='Inter')
-    )
-    gauge_col, _ = st.columns([1.5, 1])
-    with gauge_col:
+        ))
+        fig.update_layout(height=200, margin=dict(t=46, b=0, l=10, r=10),
+                          paper_bgcolor='#FFFFFF', plot_bgcolor='#FFFFFF')
         st.plotly_chart(fig, use_container_width=True)
 
-    # ── Clinical factor analysis ──
-    st.markdown('<hr class="green-divider"/>', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">Biomarker Analysis</div>', unsafe_allow_html=True)
+        # Biomarker status
+        st.markdown("""
+        <div style="font-size:0.67rem;font-weight:700;letter-spacing:2px;
+                    text-transform:uppercase;color:#64748B;margin-bottom:8px;">Biomarker Status</div>
+        <div style="background:#FAFCFF;border:1px solid #E0F2FE;border-radius:10px;
+                    padding:4px 16px;margin-bottom:14px;">
+        """, unsafe_allow_html=True)
 
-    def badge(status):
-        if status == "red":    return "factor-badge-red"
-        if status == "yellow": return "factor-badge-yellow"
-        return "factor-badge-green"
+        def get_pill(val, red_fn, amber_fn):
+            if red_fn(val):   return "pill-red",   "HIGH"
+            if amber_fn(val): return "pill-amber", "ELEVATED"
+            return "pill-teal", "NORMAL"
 
-    def glucose_status(g):
-        if g >= 126: return ("Diabetes Range", "red")
-        if g >= 100: return ("Prediabetes", "yellow")
-        return ("Normal", "green")
+        rows = [
+            ("Glucose",        f"{glucose} mg/dL",
+             get_pill(glucose,        lambda x: x >= 126, lambda x: x >= 100)),
+            ("BMI",            f"{bmi:.1f}",
+             get_pill(bmi,            lambda x: x >= 30,  lambda x: x >= 25)),
+            ("Blood Pressure", f"{blood_pressure} mmHg",
+             get_pill(blood_pressure, lambda x: x >= 140, lambda x: x >= 120)),
+            ("Insulin",        f"{insulin} IU/mL",
+             get_pill(insulin,        lambda x: x > 200,  lambda x: x > 100)),
+            ("Age",            f"{age} yrs",
+             get_pill(age,            lambda x: x > 45,   lambda x: x > 30)),
+            ("DPF Score",      f"{dpf:.2f}",
+             get_pill(dpf,            lambda x: x > 1.0,  lambda x: x >= 0.5)),
+        ]
 
-    def bmi_status(b):
-        if b >= 30:   return ("Obese", "red")
-        if b >= 25:   return ("Overweight", "yellow")
-        if b < 18.5:  return ("Underweight", "yellow")
-        return ("Normal", "green")
-
-    def bp_status(bp):
-        if bp >= 140: return ("Hypertensive", "red")
-        if bp >= 120: return ("Elevated", "yellow")
-        return ("Normal", "green")
-
-    def insulin_status(i):
-        if i > 200:  return ("High", "red")
-        if i > 100:  return ("Elevated", "yellow")
-        return ("Normal", "green")
-
-    def age_status(a):
-        if a > 45:  return ("Senior Risk", "red")
-        if a > 30:  return ("Moderate Risk", "yellow")
-        return ("Low Risk", "green")
-
-    factors = [
-        ("Glucose", f"{glucose} mg/dL", *glucose_status(glucose)),
-        ("BMI", f"{bmi:.1f}", *bmi_status(bmi)),
-        ("Blood Pressure", f"{blood_pressure} mmHg", *bp_status(blood_pressure)),
-        ("Insulin", f"{insulin} IU/mL", *insulin_status(insulin)),
-        ("Age", f"{age} years", *age_status(age)),
-        ("Pregnancies", str(pregnancies), ("Elevated" if pregnancies > 5 else "Normal"),
-         "yellow" if pregnancies > 5 else "green"),
-    ]
-
-    fc1, fc2 = st.columns(2)
-    for i, (name, value, label, status) in enumerate(factors):
-        col = fc1 if i % 2 == 0 else fc2
-        with col:
+        for name, value, (pill_cls, pill_label) in rows:
             st.markdown(f"""
-            <div class="factor-chip">
-                <span class="factor-name">{name}</span>
-                <span>
-                    <span class="factor-value">{value}</span>&nbsp;
-                    <span class="{badge(status)}">{label}</span>
+            <div class="bm-row">
+                <span class="bm-name">{name}</span>
+                <span style="display:flex;align-items:center;gap:8px;">
+                    <span class="bm-val">{value}</span>
+                    <span class="{pill_cls}">{pill_label}</span>
                 </span>
             </div>
             """, unsafe_allow_html=True)
 
-    # ── Clinical action plan ──
-    st.markdown('<hr class="green-divider"/>', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">Clinical Recommendation Protocol</div>', unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
-    if prediction == 1:
-        actions = [
-            ("🔬", "Confirmatory Diagnostic Testing",
-             "Order fasting plasma glucose (FPG) and HbA1c tests immediately to confirm diagnosis."),
-            ("👨‍⚕️", "Endocrinology Referral",
-             "Refer patient to an endocrinologist or diabetologist for specialist evaluation."),
-            ("🥗", "Therapeutic Lifestyle Intervention",
-             "Initiate structured diet counselling and a supervised physical activity programme."),
-            ("💊", "Pharmacological Assessment",
-             "Evaluate candidacy for metformin or other glycaemic control agents per clinical guidelines."),
-            ("📅", "Intensive Monitoring Protocol",
-             "Schedule 3-month follow-up with repeat HbA1c, lipid panel, and renal function tests."),
-        ]
-    else:
-        actions = [
-            ("✅", "Routine Preventive Monitoring",
-             "Continue annual screening with fasting glucose and HbA1c as standard of care."),
-            ("🥗", "Lifestyle Optimisation",
-             "Reinforce Mediterranean diet and 150 min/week moderate-intensity physical activity."),
-            ("📊", "Risk Factor Surveillance",
-             "Monitor BMI, blood pressure, and lipid profile at every clinical encounter."),
-            ("📚", "Patient Education",
-             "Provide diabetes prevention programme materials and self-monitoring guidance."),
-            ("📅", "12-Month Review",
-             "Schedule annual wellness review with updated risk stratification assessment."),
-        ]
-
-    for icon, title, desc in actions:
-        st.markdown(f"""
-        <div class="action-card">
-            <div class="action-icon">{icon}</div>
-            <div class="action-text">
-                <strong>{title}</strong>
-                <span>{desc}</span>
-            </div>
-        </div>
+        # Protocol
+        st.markdown("""
+        <div style="font-size:0.67rem;font-weight:700;letter-spacing:2px;
+                    text-transform:uppercase;color:#64748B;margin-bottom:8px;">Clinical Protocol</div>
+        <div style="background:#FAFCFF;border:1px solid #E0F2FE;border-radius:10px;
+                    padding:4px 16px;margin-bottom:14px;">
         """, unsafe_allow_html=True)
 
-    # ── Input summary ──
-    with st.expander("📋 View Full Patient Input Summary"):
-        st.dataframe(input_data[['Pregnancies','Glucose','BloodPressure','SkinThickness',
-                                  'Insulin','BMI','DiabetesPedigreeFunction','Age']
-                                  if all(c in input_data.columns for c in ['Pregnancies','Glucose'])
-                                  else input_data].T.rename(columns={0: 'Value'}),
-                     use_container_width=True)
+        if prediction == 1:
+            steps = [
+                ("Confirmatory Testing",    "Order FPG and HbA1c. FPG ≥126 mg/dL or HbA1c ≥6.5% confirms diagnosis."),
+                ("Specialist Referral",     "Refer to endocrinologist for full clinical evaluation and management plan."),
+                ("Lifestyle Intervention",  "Structured nutrition counselling + 150 min/week physical activity protocol."),
+                ("Pharmacological Review",  "Assess metformin candidacy per ADA/WHO guidelines."),
+                ("Monitoring Schedule",     "3-month follow-up: repeat HbA1c, lipid panel, renal function."),
+            ]
+            nc = "step-num-high"
+        else:
+            steps = [
+                ("Routine Screening",       "Annual FPG and HbA1c as standard preventive care."),
+                ("Lifestyle Optimisation",  "Mediterranean diet + ≥150 min/week moderate aerobic activity."),
+                ("Risk Factor Surveillance","Monitor BMI, BP, and lipid profile at each encounter."),
+                ("Patient Education",       "Provide diabetes prevention resources and self-monitoring tools."),
+                ("Annual Review",           "12-month wellness check with updated risk stratification."),
+            ]
+            nc = "step-num"
 
-    # ── Disclaimer ──
-    st.markdown("""
-    <div class="disclaimer">
-        ⚠️ <strong>Clinical Disclaimer:</strong> GlucoseIQ is an AI-assisted decision support tool 
-        intended for educational and portfolio demonstration purposes only. It is <strong>not a substitute 
-        for professional medical advice, diagnosis, or treatment.</strong> All clinical decisions must be 
-        made by qualified healthcare professionals in accordance with applicable guidelines and standards of care.
-        <br/><br/>
-        Dataset: Pima Indians Diabetes Database (National Institute of Diabetes and Digestive and Kidney Diseases).
-        Built by <strong>Yemi Fatodu</strong> — Data Scientist & Full-Stack Product Builder.
-    </div>
-    """, unsafe_allow_html=True)
+        for i, (title, desc) in enumerate(steps, 1):
+            st.markdown(f"""
+            <div class="protocol-step">
+                <div class="{nc}">{i}</div>
+                <div class="step-body"><strong>{title}</strong><span>{desc}</span></div>
+            </div>
+            """, unsafe_allow_html=True)
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        with st.expander("📋 Full Patient Input Record"):
+            st.dataframe(input_data.iloc[:, :8].T.rename(columns={0: 'Value'}), use_container_width=True)
+
+        st.markdown("""
+        <div class="disclaimer">
+            ⚠️ <strong>Clinical Disclaimer:</strong> GlucoseIQ is an AI-assisted decision support tool
+            for educational and portfolio demonstration purposes only. Not a substitute for professional
+            medical advice, diagnosis, or treatment. All clinical decisions must be made by qualified
+            healthcare professionals. &nbsp;|&nbsp; Dataset: Pima Indians Diabetes Database · NIDDK.
+            &nbsp;|&nbsp; Built by <strong>Yemi Fatodu</strong> — Data Scientist &amp; Full-Stack Product Builder.
+        </div>
+        """, unsafe_allow_html=True)
