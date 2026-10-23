@@ -1,4 +1,4 @@
-name: Keep Streamlit app awake
+name: Keep Streamlit apps awake
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
 jobs:
   wake:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,4 +17,8 @@ jobs:
       - run: pip install playwright && playwright install --with-deps chromium
       - run: python .github/scripts/keep_awake.py
         env:
-          APP_URL: https://diabetes-prediction-yemi.streamlit.app/
+          APP_URLS: |
+            https://diabetes-prediction-yemi.streamlit.app/
+            https://yemifatodu-arbitrage-iq.streamlit.app/
+            https://yemifatodu-bank-churn-predictor.streamlit.app/
+            https://yemifatodu-smart-eda-dashboard.streamlit.app/
